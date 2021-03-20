@@ -1,0 +1,66 @@
+<html>
+<head>
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="estilos.css">
+</head>
+<body>
+<center>
+<h1> ARTEFACTOS</h1>	
+<div class="marco">	
+<form name="fr">
+<table border=1>
+<tr><td>SELECCIONE ARTEFACTO<td><select name="cbd" onchange="cambia()"> 
+	
+            <option value=0>Elegir
+            <option value=1500>horno
+            <option value=2000>televisor
+            <option value=500>licuadora
+            
+            </select>  	
+<tr><td colspan=2 align=center><img name="foto" height=300 width=300>
+            <tr><tr><td>PRECIO AL CONTADO<td><input name="tprecio" readonly>
+           
+     <tr><td>MESES DE PAGO <td>
+<input name="op" type="radio" >6
+<input name="op" type="radio" >12
+<input name="op" type="radio" >18  
+
+
+ <tr> <td><input type="button" id="btn1" value="procesar" onclick="proceso()">
+<tr><td><textarea name="salida" rows=5 cols=30 readonly></textarea>
+</table>
+</form>
+</div>
+</center>
+<script type="text/javascript">
+function cambia(){
+	 ind=fr.cbd.selectedIndex;//ind es el indice
+    texto=fr.cbd.options[ind].text; // un vector--ind es el indice 
+    costo=fr.cbd.options[ind].value;
+    fr.foto.src="ARTEFACTOS/"+texto+".jpg";
+     fr.tprecio.value=costo;
+}
+
+
+function proceso(){
+precio= Number(fr.tprecio.value);
+
+if(fr.op[0].checked) {imp =0.20*precio; mes=6;}
+if(fr.op[1].checked) {imp=0.40*precio; mes=12;}
+if(fr.op[2].checked) {imp=0.60*precio; mes=18;}
+
+  saldo=imp+precio;
+  cmensual=saldo/mes;
+  
+   fr.salida.value="Interes a pagar:"+imp+ "\n" +"el saldo es :"+saldo+ "\n" +"Cuota mensual es :"+cmensual.toFixed(2);
+
+}
+</script>
+
+</script>
+</table>
+</form>
+</div>
+</center>	
+</body>
+</html>
